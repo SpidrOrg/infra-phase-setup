@@ -11,6 +11,7 @@ const ingestionAwsRepo = process.env.MP_INGESTION_AWS_REPO.split("/");
 const transformationAwsRepo = process.env.MP_TRANSFORMATION_AWS_REPO.split("/");
 const platformTfRepo = process.env.MP_PLATFORM_TF_REPO.split("/");
 const envName = process.env.MP_ENV_NAME;
+const githubRepoLink = process.env.MP_GITHUB_ECR_REPO_LINK;
 
 const app = new cdk.App();
 new InfraPhaseSetupStack(app, 'InfraPhaseSetupStack', {
@@ -19,5 +20,6 @@ new InfraPhaseSetupStack(app, 'InfraPhaseSetupStack', {
   codestarConnArn,
   ingestionAwsRepo,
   transformationAwsRepo,
-  platformTfRepo
+  platformTfRepo,
+  githubRepoLink
 });

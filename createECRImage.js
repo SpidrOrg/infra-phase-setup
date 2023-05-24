@@ -18,7 +18,7 @@ exec(`aws ecr create-repository --repository-name ${repositoryName}`, (err, outp
       return
     }
     console.log("Successfully cloned repository", output1);
-    exec(`cd terraform-dependencies-aws-code-pipeline && aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${awsAccount}.dkr.ecr.us-east-1.amazonaws.com && docker build -t terraform-dependencies . && docker tag terraform-dependencies:latest ${awsAccount}.dkr.ecr.us-east-1.amazonaws.com/terraform-dependencies:latest && docker push ${awsAccount}.dkr.ecr.us-east-1.amazonaws.com/terraform-dependencies:latest`, (error1, out1)=>{
+    exec(`cd terraform-dependencies && aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${awsAccount}.dkr.ecr.us-east-1.amazonaws.com && docker build -t terraform-dependencies . && docker tag terraform-dependencies:latest ${awsAccount}.dkr.ecr.us-east-1.amazonaws.com/terraform-dependencies:latest && docker push ${awsAccount}.dkr.ecr.us-east-1.amazonaws.com/terraform-dependencies:latest`, (error1, out1)=>{
       if (error1){
         console.log("Error executing commands", error1);
         return
